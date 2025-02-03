@@ -11,6 +11,40 @@ A Node.js (18.0) function for managing media conversion jobs via Appwrite. This 
 - **Storage & Database:** Uses Appwrite Storage and Database to manage files and metadata.
 - **Background Processing:** Forks a background process to execute conversion jobs.
 
+
+# Usage Examples
+## HTTP POST (Create or Update a Conversion Job)
+```bash
+curl -X POST https://your-function-endpoint \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fileId": "file_id_12345",
+    "formats": ["1080p", "720p"],
+    "name": "Sample Video"
+  }'
+```
+- If a media document for the given 'fileId' already exists, the conversion formats will be updated.
+- Otherwise, a new media document is created and a background process is forked to handle the conversion.
+
+## HTTP DELETE (Delete a Conversion Job or Specific Formats)
+Send a DELETE request with a JSON payload. For example, to delete specific formats:
+```bash
+curl -X DELETE https://your-function-endpoint \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fileId": "file_12345",
+    "formats": ["720p"]
+  }'
+```
+Or to delete the entire media document along with all formats:
+```bash
+curl -X DELETE https://your-function-endpoint \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fileId": "file_12345"
+  }'
+```
+
 ## Requirements
 
 - Node.js v18
@@ -156,42 +190,6 @@ cargoose-api/
 - **lib/router.js:** Routes requests to the appropriate handler.
 - **handlers/eventHandler.js & httpHandler.js:** Process Appwrite events and HTTP requests respectively.
 
-
-
-
-
-# Usage Examples
-## HTTP POST (Create or Update a Conversion Job)
-```bash
-curl -X POST https://your-function-endpoint \
-  -H "Content-Type: application/json" \
-  -d '{
-    "fileId": "file_id_12345",
-    "formats": ["1080p", "720p"],
-    "name": "Sample Video"
-  }'
-```
-- If a media document for the given 'fileId' already exists, the conversion formats will be updated.
-- Otherwise, a new media document is created and a background process is forked to handle the conversion.
-
-## HTTP DELETE (Delete a Conversion Job or Specific Formats)
-Send a DELETE request with a JSON payload. For example, to delete specific formats:
-```bash
-curl -X DELETE https://your-function-endpoint \
-  -H "Content-Type: application/json" \
-  -d '{
-    "fileId": "file_12345",
-    "formats": ["720p"]
-  }'
-```
-Or to delete the entire media document along with all formats:
-```bash
-curl -X DELETE https://your-function-endpoint \
-  -H "Content-Type: application/json" \
-  -d '{
-    "fileId": "file_12345"
-  }'
-```
 
 
 ## Appwrite Events (planned)
