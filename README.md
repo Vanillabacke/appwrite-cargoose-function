@@ -161,7 +161,7 @@ RETRY_DELAY_MS=5000
 ]
 ```
 
-
+### Example of the output data of the document:
 ```json
 {
   "fileId": "FILE_ID",
