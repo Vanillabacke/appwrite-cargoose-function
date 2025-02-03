@@ -161,6 +161,39 @@ RETRY_DELAY_MS=5000
 ]
 ```
 
+
+```json
+{
+  "fileId": "FILE_ID",
+  "bucketId": "BUCKET_ID",
+  "name": "File RANDOM_ID",
+  "mimeType": "MIME_TYPE",
+  "size": 0,
+  "createdAt": "CREATED_AT_TIMESTAMP",
+  "updatedAt": "UPDATED_AT_TIMESTAMP",
+  "isImage": false,
+  "isVideo": true,
+  "width": null,
+  "height": null,
+  "duration": null,
+  "ownerId": "OWNER_ID",
+  "visibility": "private",
+  "sharedWith": [],
+  "tags": [],
+  "description": "DESCRIPTION",
+  "lastAccessedAt": "LAST_ACCESSED_TIMESTAMP",
+  "deletedAt": null,
+  "hash": "HASH_VALUE",
+  "processingTime": null,
+  "formats": [
+    "{\"format\":\"1080p\",\"resolution\":\"\",\"status\":\"processing\",\"fileId\":null,\"size\":null,\"width\":null,\"height\":null,\"retryCount\":0,\"maxRetries\":3,\"processingTime\":null,\"errors\":[],\"conversionStart\":\"CONVERSION_START_TIMESTAMP\",\"progress\":48,\"targetWidth\":1920}",
+    "{\"format\":\"240p\",\"resolution\":\"\",\"status\":\"queued\",\"fileId\":null,\"size\":null,\"width\":null,\"height\":null,\"retryCount\":0,\"maxRetries\":3,\"processingTime\":null,\"errors\":[]}"
+  ],
+  "metaData": "{\"status\":\"processing\",\"progress\":24,\"step\":\"Processing (24%)\",\"message\":\"\",\"jobLastUpdated\":\"JOB_LAST_UPDATED_TIMESTAMP\"}",
+}
+
+```
+
 ## Project Structure
 ```pgsql
 cargoose-api/
